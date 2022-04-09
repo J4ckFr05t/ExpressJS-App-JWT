@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
+var morgan  = require('morgan')
+var fs = require('fs')
 
 
 const connectDB = require('./DB/connection')
@@ -13,6 +15,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(morgan('combined', {
+  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+}))
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
