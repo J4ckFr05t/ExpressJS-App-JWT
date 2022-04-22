@@ -6,8 +6,7 @@ mongoose.set('useCreateIndex', true);
 const MachineSchema = new mongoose.Schema({
     idcard : {
         type : String,
-        required : true,
-        unique : true
+        required : true
     },
     machine : {
         type : String,

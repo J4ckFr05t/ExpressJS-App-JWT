@@ -80,7 +80,7 @@ router.post('/upload', function(req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile;
-  uploadPath = "/var/www/html/uploads"
+  uploadPath = path.join(__dirname,"../uploads", sampleFile.name)
 
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv(uploadPath, function(err) {
