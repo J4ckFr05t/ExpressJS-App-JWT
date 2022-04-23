@@ -7,6 +7,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var morgan  = require('morgan')
 var fs = require('fs')
+const port = 3000
 
 const connectDB = require('./DB/connection')
 connectDB();
@@ -15,6 +16,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.listen(port, () => {
+  console.log(`Webserver listening on port ${port}`)
+})
+
 app.use(fileUpload());
 
 app.use(morgan('combined', {
