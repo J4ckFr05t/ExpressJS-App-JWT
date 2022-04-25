@@ -7,7 +7,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var morgan  = require('morgan')
 var fs = require('fs')
-const port = 3000
+const port = 8080
 
 const connectDB = require('./DB/connection')
 connectDB();
