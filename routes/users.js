@@ -70,7 +70,7 @@ router.post('/register',async (req,res)=>{
   })
 })
 
-router.post('/upload', (res, req) =>{
+router.post('/upload', function(req, res) {
   let sampleFile;
   let uploadPath;
 
@@ -80,14 +80,14 @@ router.post('/upload', (res, req) =>{
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile;
-  uploadPath = "/var/www/html/uploads/"+sampleFile.name
+  uploadPath = path.join(__dirname,"../uploads", sampleFile.name)
 
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv(uploadPath, function(err) {
     if (err)
       return res.status(500).send(err);
 
-    return res.send('<script>alert("file uploaded"); window.location.href = "/machines/login";</script>')
+    return res.send('<p>Uploaded</p>')
   });
 })
 
